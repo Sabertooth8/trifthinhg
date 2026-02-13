@@ -1,0 +1,534 @@
+:root {
+    --primary: #ff4d00;
+    /* Neon Orange */
+    --primary-glow: rgba(255, 77, 0, 0.5);
+    --bg-dark: #000000;
+    --card-bg: #050505;
+    --text-main: #ffffff;
+    --text-muted: #888888;
+    --accent: #ff0000;
+    /* Pure Red */
+    --accent-glow: rgba(255, 0, 0, 0.4);
+    --glass-border: rgba(255, 255, 255, 0.08);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+body {
+    background: var(--bg-dark);
+    color: var(--text-main);
+    line-height: 1.4;
+    overflow-x: hidden;
+}
+
+/* Background Effects - Mixed Red & Orange Glow */
+body::before {
+    content: '';
+    position: fixed;
+    top: -10%;
+    left: 10%;
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, var(--accent-glow) 0%, transparent 75%);
+    z-index: -1;
+    pointer-events: none;
+    filter: blur(50px);
+}
+
+body::after {
+    content: '';
+    position: fixed;
+    bottom: -10%;
+    right: 10%;
+    width: 800px;
+    height: 800px;
+    background: radial-gradient(circle, var(--primary-glow) 0%, transparent 75%);
+    z-index: -1;
+    pointer-events: none;
+    filter: blur(50px);
+}
+
+.container {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 1.5rem;
+}
+
+/* Navbar - High Tech Style */
+nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem 0;
+    border-bottom: 1px solid var(--glass-border);
+    margin-bottom: 2rem;
+}
+
+.logo {
+    font-size: 2.5rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, var(--accent), var(--primary));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    letter-spacing: -2px;
+    text-transform: uppercase;
+}
+
+.nav-links {
+    display: flex;
+    gap: 3rem;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 2px;
+    font-weight: 600;
+}
+
+.nav-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.nav-links a:hover {
+    color: var(--primary);
+}
+
+/* Hero Section */
+.hero {
+    margin-top: 4rem;
+    margin-bottom: 8rem;
+    position: relative;
+}
+
+.hero h1 {
+    font-size: clamp(4rem, 15vw, 10rem);
+    font-weight: 900;
+    line-height: 0.85;
+    text-transform: uppercase;
+    letter-spacing: -5px;
+    margin-bottom: 1rem;
+    background: linear-gradient(to right, var(--text-main), var(--primary), var(--accent));
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.hero .reg-mark {
+    font-size: 2rem;
+    vertical-align: top;
+    margin-left: 10px;
+    color: var(--accent);
+    text-shadow: 0 0 10px var(--accent-glow);
+}
+
+/* Product Section */
+.product-section-title {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 3rem;
+}
+
+.product-section-title h2 {
+    font-size: 3rem;
+    text-transform: uppercase;
+    letter-spacing: -1px;
+}
+
+.product-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.5rem;
+}
+
+.product-card {
+    background: var(--card-bg);
+    border: 1px solid var(--glass-border);
+    padding: 1rem;
+    position: relative;
+    transition: all 0.3s;
+}
+
+.product-card:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 20px var(--accent-glow);
+    transform: translateY(-5px);
+}
+
+.badge {
+    position: absolute;
+    top: 1.5rem;
+    right: 1.5rem;
+    background: linear-gradient(135deg, var(--accent), var(--primary));
+    color: white;
+    padding: 0.3rem 0.8rem;
+    font-size: 0.65rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    z-index: 10;
+    letter-spacing: 1px;
+}
+
+.product-image {
+    width: 100%;
+    aspect-ratio: 1/1.2;
+    object-fit: cover;
+    filter: contrast(1.1) brightness(0.85);
+    margin-bottom: 1.5rem;
+    background: #111;
+    border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.product-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.product-title {
+    font-size: 1.1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    max-width: 70%;
+    letter-spacing: -0.5px;
+}
+
+.product-price {
+    font-size: 1rem;
+    color: var(--primary);
+    font-weight: 700;
+}
+
+/* Brand Grouping Styles */
+.brand-card {
+    background: var(--card-bg);
+    border: 1px solid var(--glass-border);
+    padding: 2rem;
+    margin-bottom: 3rem;
+    border-radius: 4px;
+}
+
+.brand-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid var(--glass-border);
+    margin-bottom: 2rem;
+    padding-bottom: 1rem;
+}
+
+.brand-title {
+    font-size: 1.8rem;
+    font-weight: 900;
+    letter-spacing: -1px;
+    color: var(--text-main);
+    text-transform: uppercase;
+}
+
+.brand-stats {
+    font-size: 0.6rem;
+    color: var(--primary);
+    font-weight: 800;
+    letter-spacing: 2px;
+}
+
+.brand-items-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1.5rem;
+}
+
+.item-mini {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--glass-border);
+    padding: 1rem;
+    transition: all 0.3s;
+}
+
+.item-mini:hover {
+    border-color: var(--accent);
+    background: rgba(255, 0, 0, 0.05);
+}
+
+.item-image-small {
+    width: 100%;
+    aspect-ratio: 1/1;
+    object-fit: cover;
+    margin-bottom: 1rem;
+    filter: brightness(0.8);
+}
+
+.item-mini-info {
+    text-align: left;
+}
+
+.item-name-small {
+    font-size: 0.8rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: var(--text-main);
+    margin-bottom: 0.3rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.item-price-small {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.btn-mini {
+    width: 100%;
+    padding: 0.5rem;
+    background: transparent;
+    border: 1px solid var(--primary);
+    color: var(--primary);
+    font-size: 0.6rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.btn-mini:hover {
+    background: var(--primary);
+    color: #000;
+}
+
+/* Button UI */
+.btn {
+    padding: 1rem 2rem;
+    border: 1px solid var(--glass-border);
+    background: transparent;
+    color: var(--text-main);
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 0.8rem;
+    cursor: pointer;
+    transition: all 0.3s;
+    letter-spacing: 1px;
+}
+
+.btn:hover {
+    background: var(--text-main);
+    color: var(--bg-dark);
+}
+
+.btn-primary {
+    background: linear-gradient(135deg, var(--accent), var(--primary));
+    border: none;
+    color: #000;
+}
+
+.btn-primary:hover {
+    box-shadow: 0 0 20px var(--primary-glow);
+    transform: scale(1.02);
+}
+
+/* Modal UI */
+.modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.95);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+}
+
+.modal {
+    background: #000;
+    border: 1px solid var(--glass-border);
+    padding: 4rem;
+    width: 90%;
+    max-width: 700px;
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+/* Forms */
+.form-group {
+    margin-bottom: 2rem;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    margin-bottom: 0.8rem;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--glass-border);
+    padding: 1rem 0;
+    color: white;
+    font-size: 1.2rem;
+    outline: none;
+    transition: border-bottom 0.3s;
+}
+
+input:focus,
+select:focus {
+    border-bottom: 1px solid var(--primary);
+}
+
+/* Custom Select Size UI */
+.size-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 0.5rem;
+}
+
+.size-btn {
+    padding: 1rem;
+    border: 1px solid var(--glass-border);
+    text-align: center;
+    cursor: pointer;
+}
+
+.size-btn.active {
+    border-color: var(--primary);
+    color: var(--primary);
+    background: rgba(255, 77, 0, 0.1);
+}
+
+/* Tables for Admin */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    padding: 1.5rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+th {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+/* Admin Dashboard Enhancements */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 4rem;
+}
+
+.stat-card {
+    background: #0a0a0a;
+    border: 1px solid var(--glass-border);
+    padding: 2rem;
+    position: relative;
+    overflow: hidden;
+}
+
+.stat-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background: var(--primary);
+    box-shadow: 0 0 10px var(--primary);
+}
+
+.stat-label {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    letter-spacing: 1px;
+}
+
+.stat-value {
+    font-size: 2.5rem;
+    font-weight: 900;
+    margin-top: 0.5rem;
+}
+
+.admin-sidebar {
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 3rem;
+    border-bottom: 1px solid var(--glass-border);
+    padding-bottom: 1rem;
+}
+
+.admin-tab {
+    cursor: pointer;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    padding: 0.5rem 1rem;
+    transition: all 0.3s;
+}
+
+.admin-tab.active {
+    color: var(--primary);
+    border-bottom: 2px solid var(--primary);
+}
+
+.status-badge {
+    padding: 0.3rem 0.6rem;
+    font-size: 0.65rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    background: rgba(0, 255, 100, 0.1);
+    color: #00ff64;
+    border: 1px solid #00ff64;
+}
+
+/* Transitions */
+.fade-in {
+    animation: fadeIn 0.4s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive fixes */
+@media (max-width: 768px) {
+    .hero h1 {
+        font-size: 5rem;
+    }
+
+    .admin-sidebar {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}

@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LEYTECH - Premium Archive Store</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&display=swap"
+        rel="stylesheet">
+</head>
+
+<body>
+
+    <div class="container">
+        <!-- NAVIGASI -->
+        <nav>
+            <div class="logo">Leytech</div>
+            <div class="nav-links">
+                <a href="#" onclick="showPage('buyer-page')">Archive</a>
+                <a href="#" onclick="showPage('login-page')" id="admin-link">Owner Access</a>
+                <a href="#" onclick="logout()" id="logout-link" style="display:none; color: var(--primary);">System
+                    Logout</a>
+            </div>
+            <div style="font-size: 0.8rem; letter-spacing: 1px;">08:44:02 LONDON</div>
+        </nav>
+
+        <!-- PAGE: BUYER -->
+        <main id="buyer-page" class="page active fade-in">
+            <section class="hero">
+                <h1>ARCHIVE<span class="reg-mark">®</span><br>SMARTER.</h1>
+                <div style="display: flex; justify-content: space-between; margin-top: 2rem;">
+                    <p style="max-width: 400px; color: var(--text-muted); font-size: 1.1rem;">
+                        A curated selection of archival pieces from global brands. Authentic, rare, and
+                        high-performance.
+                    </p>
+                    <div style="text-align: right;">
+                        <span style="font-size: 2rem; font-weight: 200;">2026</span>
+                    </div>
+                </div>
+            </section>
+
+            <section>
+                <div class="product-section-title">
+                    <h2>Selected Pieces</h2>
+                    <p
+                        style="color: var(--text-muted); text-transform: uppercase; font-size: 0.75rem; letter-spacing: 2px;">
+                        Scroll to explore</p>
+                </div>
+                <div id="product-list" class="product-grid">
+                    <!-- Loaded via JS -->
+                </div>
+            </section>
+        </main>
+
+        <!-- PAGE: LOGIN -->
+        <section id="login-page" class="page fade-in" style="display:none;">
+            <div class="login-card" style="margin-top: 10vh;">
+                <h1 style="font-size: 4rem; text-transform: uppercase; letter-spacing: -2px; margin-bottom: 2rem;">
+                    Authorized<br>Access.</h1>
+                <div id="login-error"
+                    style="display:none; color: var(--accent); margin-bottom: 2rem; font-weight: 700;">ACCESS DENIED.
+                    INCORRECT SYSTEM PARAMETERS.</div>
+                <div class="form-group">
+                    <label>IdentificationID</label>
+                    <input type="text" id="username" placeholder="admin">
+                </div>
+                <div class="form-group">
+                    <label>AccessKey</label>
+                    <input type="password" id="password" placeholder="••••••••">
+                </div>
+                <button onclick="handleLogin()" class="btn btn-primary" style="width: 100%;">Initiate Login</button>
+            </div>
+        </section>
+
+        <!-- PAGE: ADMIN -->
+        <main id="admin-page" class="page fade-in" style="display:none;">
+            <div class="admin-header">
+                <h1 style="font-size: 3rem; text-transform: uppercase;">Command<br>Center.</h1>
+                <div style="text-align: right;">
+                    <p style="font-size: 0.7rem; color: var(--text-muted);">SYSTEM STATUS: <span
+                            style="color:#00ff64;">OPTIMAL</span></p>
+                    <p id="current-timestamp" style="font-size: 0.7rem; color: var(--text-muted);"></p>
+                </div>
+            </div>
+
+            <!-- Stats Overview -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-label">Total Inventory Units</div>
+                    <div id="stat-total-products" class="stat-value">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Packages Transmitted</div>
+                    <div id="stat-total-orders" class="stat-value">0</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-label">Total Archive Value</div>
+                    <div id="stat-total-revenue" class="stat-value">IDR 0</div>
+                </div>
+            </div>
+
+            <div class="admin-sidebar">
+                <div onclick="showAdminSection('manage-products', this)" class="admin-tab active">Inventory Management
+                </div>
+                <div onclick="showAdminSection('view-orders', this)" class="admin-tab">Transmission Logs</div>
+                <div onclick="showAdminSection('add-new', this)" class="admin-tab">Register New Unit</div>
+            </div>
+
+            <section id="manage-products" class="admin-section">
+                <div style="border: 1px solid var(--glass-border); padding: 2rem; background: #050505;">
+                    <table id="admin-product-table">
+                        <thead>
+                            <tr>
+                                <th>Unit Asset</th>
+                                <th>Designation</th>
+                                <th>Class</th>
+                                <th>Valuation</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+                        <tbody id="inventory-list"></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="add-new" class="admin-section" style="display:none;">
+                <div style="background: #0a0a0a; border: 1px solid var(--glass-border); padding: 3rem;">
+                    <h3 style="text-transform: uppercase; margin-bottom: 2rem;">Unit Registration</h3>
+                    <div style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 2rem;">
+                        <div class="form-group">
+                            <label>Designation</label>
+                            <input type="text" id="new-p-name" placeholder="Ex: Nike Dunk Low">
+                        </div>
+                        <div class="form-group">
+                            <label>Value (IDR)</label>
+                            <input type="number" id="new-p-price" placeholder="1000000">
+                        </div>
+                        <div class="form-group">
+                            <label>Classification</label>
+                            <select id="new-p-category">
+                                <option value="Shoes">Shoes</option>
+                                <option value="Hoodie">Hoodie</option>
+                                <option value="Jacket">Jacket</option>
+                                <option value="Tee">Tee</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Visual Asset URL</label>
+                            <input type="text" id="new-p-image" placeholder="https://unsplash.com/...">
+                        </div>
+                    </div>
+                    <button onclick="addProduct()" class="btn btn-primary" style="width: 100%; margin-top: 2rem;">Inject
+                        to Database</button>
+                </div>
+            </section>
+
+            <section id="view-orders" class="admin-section" style="display:none;">
+                <div style="border: 1px solid var(--glass-border); padding: 2rem; background: #050505;">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>LogID</th>
+                                <th>Subject</th>
+                                <th>Package</th>
+                                <th>Size</th>
+                                <th>Status</th>
+                                <th>Timestamp</th>
+                            </tr>
+                        </thead>
+                        <tbody id="order-list"></tbody>
+                    </table>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- MODAL CHECKOUT -->
+    <div id="checkoutModal" class="modal-overlay">
+        <div class="modal fade-in">
+            <h1 id="modalTitle" style="font-size: 3rem; text-transform: uppercase; margin-bottom: 1rem;">Package
+                Procurement</h1>
+            <p id="modalPrice" style="color: var(--primary); font-size: 2rem; margin-bottom: 3rem; font-weight: 800;">
+            </p>
+
+            <div class="form-group">
+                <label>Recipient Name</label>
+                <input type="text" id="cust-name" placeholder="Full Name">
+            </div>
+
+            <!-- Size Selection Area -->
+            <div id="size-selection-area" class="form-group">
+                <label>Product Parameters (Size)</label>
+                <div id="size-options" class="size-grid">
+                    <!-- Dynamic buttons -->
+                </div>
+                <input type="hidden" id="selectedSize">
+            </div>
+
+            <div class="form-group">
+                <label>Procurement Channel</label>
+                <div class="payment-grid">
+                    <div class="payment-option" onclick="selectPayment('E-Wallet', this)">
+                        <strong>E-Wallet</strong>
+                    </div>
+                    <div class="payment-option" onclick="selectPayment('Bank Transfer', this)">
+                        <strong>Node Transfer</strong>
+                    </div>
+                </div>
+                <input type="hidden" id="selectedPayment">
+            </div>
+
+            <div style="display: flex; gap: 1rem; margin-top: 4rem;">
+                <button onclick="closeCheckout()" class="btn" style="flex: 1;">Abort</button>
+                <button onclick="processOrder()" class="btn btn-primary" style="flex: 2;">Confirm Procurement</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
