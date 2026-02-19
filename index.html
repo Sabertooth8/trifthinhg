@@ -4,10 +4,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LEYTECH - Premium Archive Store</title>
-    <meta name="description"
-        content="LEYTECH — A curated selection of archival pieces from global brands. Authentic, rare, and high-performance streetwear.">
     <title id="page-title">Loopwear - Premium Archive Store</title>
+    <meta name="description"
+        content="Loopwear — A curated selection of archival pieces from global brands. Authentic, rare, and high-performance streetwear.">
     <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700;800;900&display=swap"
         rel="stylesheet">
@@ -25,24 +24,19 @@
     <div class="container">
         <!-- NAVIGASI -->
         <nav>
-            <div class="logo" id="display-biz-name">Loopwear</div>
-            <div class="nav-links">
-                <a href="#" onclick="showPage('buyer-page')">Archive</a>
-                <a href="#" onclick="showPage('login-page')" id="admin-link">Owner Access</a>
-                <a href="#" onclick="logout()" id="logout-link" style="display:none; color: var(--primary);">System
-                    <div class="logo" onclick="showPage('buyer-page'); window.scrollTo({top:0,behavior:'smooth'})"
-                        style="cursor:pointer;">Leytech</div>
-                    <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
-                        <span></span><span></span><span></span>
-                    </button>
-                    <div class="nav-links" id="nav-links">
-                        <a href="#" onclick="showPage('buyer-page'); closeMobileMenu()">Archive</a>
-                        <a href="#" onclick="showPage('login-page'); closeMobileMenu()" id="admin-link">Owner Access</a>
-                        <a href="#" onclick="logout(); closeMobileMenu()" id="logout-link"
-                            style="display:none; color: var(--primary);">System
-                            Logout</a>
-                    </div>
-                    <div class="nav-clock" id="nav-clock">00:00:00</div>
+            <div class="logo" id="display-biz-name"
+                onclick="showPage('buyer-page'); window.scrollTo({top:0,behavior:'smooth'})" style="cursor:pointer;">
+                Loopwear</div>
+            <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
+                <span></span><span></span><span></span>
+            </button>
+            <div class="nav-links" id="nav-links">
+                <a href="#" onclick="showPage('buyer-page'); closeMobileMenu()">Archive</a>
+                <a href="#" onclick="showPage('login-page'); closeMobileMenu()" id="admin-link">Owner Access</a>
+                <a href="#" onclick="logout(); closeMobileMenu()" id="logout-link"
+                    style="display:none; color: var(--primary);">System Logout</a>
+            </div>
+            <div class="nav-clock" id="nav-clock">00:00:00</div>
         </nav>
 
         <!-- PAGE: BUYER -->
@@ -50,49 +44,41 @@
 
             <!-- ===== HERO SECTION ===== -->
             <section class="hero">
-                <h1 id="display-hero-text">ARCHIVE<span class="reg-mark">®</span><br>SMARTER.</h1>
-                <div style="display: flex; justify-content: space-between; margin-top: 2rem;">
-                    <p style="max-width: 400px; color: var(--text-muted); font-size: 1.1rem;">
-                        A curated selection of archival pieces from global brands. Authentic, rare, and
-                        high-performance.
-                    </p>
-                    <div style="text-align: right;">
-                        <span style="font-size: 2rem; font-weight: 200;">2026</span>
-                        <div class="hero-content">
-                            <div class="hero-text">
-                                <h1 class="hero-title">
-                                    <span class="line-1">ARCHIVE</span>
-                                    <span class="line-2">SMARTER.<span class="reg-mark">®</span></span>
-                                </h1>
-                                <div class="hero-bottom">
-                                    <div class="hero-nav">
-                                        <button class="hero-nav-btn" id="hero-prev">PREV</button>
-                                        <button class="hero-nav-btn" id="hero-next">NEXT</button>
-                                    </div>
-                                    <div class="hero-tagline">
-                                        <p>Supercharge Your <br>Wardrobe with <span
-                                                class="text-accent">instant</span><br>Curated Pieces.</p>
-                                    </div>
-                                </div>
+                <div class="hero-content">
+                    <div class="hero-text">
+                        <h1 class="hero-title" id="display-hero-text">
+                            <span class="line-1">ARCHIVE</span>
+                            <span class="line-2">SMARTER.<span class="reg-mark">®</span></span>
+                        </h1>
+                        <div class="hero-bottom">
+                            <div class="hero-nav">
+                                <button class="hero-nav-btn" id="hero-prev">PREV</button>
+                                <button class="hero-nav-btn" id="hero-next">NEXT</button>
                             </div>
-                            <div class="hero-image-wrapper">
-                                <div class="hero-image-glow"></div>
-                                <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=800&q=80"
-                                    alt="Featured Fashion" class="hero-image" id="hero-featured-img">
+                            <div class="hero-tagline">
+                                <p>Supercharge Your <br>Wardrobe with <span
+                                        class="text-accent">instant</span><br>Curated Pieces.</p>
                             </div>
                         </div>
-                        <div class="hero-meta">
-                            <div class="hero-stats-mini">
-                                <div class="mini-stat">
-                                    <span class="mini-stat-num">78<span class="mini-stat-suffix">+</span></span>
-                                    <span class="mini-stat-label">Today's<br>Collection</span>
-                                </div>
-                            </div>
-                            <div class="hero-year">
-                                <span>2026</span>
-                                <div class="year-line"></div>
-                            </div>
+                    </div>
+                    <div class="hero-image-wrapper">
+                        <div class="hero-image-glow"></div>
+                        <img src="https://images.unsplash.com/photo-1509631179647-0177331693ae?auto=format&fit=crop&w=800&q=80"
+                            alt="Featured Fashion" class="hero-image" id="hero-featured-img">
+                    </div>
+                </div>
+                <div class="hero-meta">
+                    <div class="hero-stats-mini">
+                        <div class="mini-stat">
+                            <span class="mini-stat-num">78<span class="mini-stat-suffix">+</span></span>
+                            <span class="mini-stat-label">Today's<br>Collection</span>
                         </div>
+                    </div>
+                    <div class="hero-year">
+                        <span>2026</span>
+                        <div class="year-line"></div>
+                    </div>
+                </div>
             </section>
 
             <!-- ===== FEATURE CARDS ===== -->
@@ -231,7 +217,7 @@
             </section>
 
             <!-- ===== PRODUCT CATALOG ===== -->
-            <section id="product-catalog" class="scroll-reveal">
+            <section id="product-catalog">
                 <div class="product-section-title">
                     <h2>Selected Pieces</h2>
                     <p class="section-subtitle">Scroll to explore</p>

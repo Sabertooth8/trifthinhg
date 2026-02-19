@@ -69,6 +69,21 @@ const DEFAULT_PRODUCTS = [
     { id: 10, name: "Dickies Eisenhower Jacket", price: 950000, category: "Jacket", image: "https://images.unsplash.com/photo-1591047139829-d91aecb6caea?auto=format&fit=crop&w=800&q=80" }
 ];
 
+const DEFAULT_CONFIG = {
+    bizName: 'Loopwear',
+    heroText: '<span class="line-1">ARCHIVE</span><span class="line-2">SMARTER.<span class="reg-mark">®</span></span>',
+    payments: {
+        'DANA': '',
+        'OVO': '',
+        'GOPAY': '',
+        'SHOPEE PAY': '',
+        'BCA': '',
+        'MANDIRI': '',
+        'BNI': '',
+        'BRI': ''
+    }
+};
+
 // Initialize Storage with Auto-Sync for new defaults
 function initStorage() {
     let currentProducts = JSON.parse(localStorage.getItem('products')) || [];
@@ -197,7 +212,7 @@ function updateStats() {
     const totalRevenue = products.reduce((acc, p) => acc + p.price, 0);
     document.getElementById('stat-total-products').innerText = products.length;
     document.getElementById('stat-total-orders').innerText = orders.length;
-    document.getElementById('stat-total-revenue').innerText = formattedRevenue;
+    document.getElementById('stat-total-revenue').innerText = 'IDR ' + totalRevenue.toLocaleString('id-ID');
 }
 
 // --- BUYER APP ---
@@ -556,6 +571,43 @@ function deleteProduct(id) {
         updateStats();
         renderInventory();
     }
+}
+
+function loadSystemConfigInputs() {
+    const config = JSON.parse(localStorage.getItem('system_config'));
+    document.getElementById('config-biz-name').value = config.bizName;
+    document.getElementById('config-biz-slogan').value = config.heroText;
+
+    document.getElementById('pay-dana').value = config.payments['DANA'] || '';
+    document.getElementById('pay-ovo').value = config.payments['OVO'] || '';
+    document.getElementById('pay-gopay').value = config.payments['GOPAY'] || '';
+    document.getElementById('pay-shopeepay').value = config.payments['SHOPEE PAY'] || '';
+
+    document.getElementById('pay-bca').value = config.payments['BCA'] || '';
+    document.getElementById('pay-mandiri').value = config.payments['MANDIRI'] || '';
+    document.getElementById('pay-bni').value = config.payments['BNI'] || '';
+    document.getElementById('pay-bri').value = config.payments['BRI'] || '';
+}
+
+function saveSystemConfig() {
+    const config = {
+        bizName: document.getElementById('config-biz-name').value,
+        heroText: document.getElementById('config-biz-slogan').value,
+        payments: {
+            'DANA': document.getElementById('pay-dana').value,
+            'OVO': document.getElementById('pay-ovo').value,
+            'GOPAY': document.getElementById('pay-gopay').value,
+            'SHOPEE PAY': document.getElementById('pay-shopeepay').value,
+            'BCA': document.getElementById('pay-bca').value,
+            'MANDIRI': document.getElementById('pay-mandiri').value,
+            'BNI': document.getElementById('pay-bni').value,
+            'BRI': document.getElementById('pay-bri').value
+        }
+    };
+
+    localStorage.setItem('system_config', JSON.stringify(config));
+    applySystemConfig();
+    alert("SYSTEM PARAMETERS UPDATED SUCCESSFULLY.");
 }
 
 // --- HERO FEATURED IMAGES ROTATION ---
